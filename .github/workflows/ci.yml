@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Test
+        run: dotnet test tests/Mnemosyne.Core.Tests/Mnemosyne.Core.Tests.csproj -c Release
+
+      - name: Download Dalamud
+        run: |
+          curl -sSL https://goatcorp.github.io/dalamud-distrib/latest.zip -o dalamud.zip
+          unzip -q dalamud.zip -d ~/dalamud
+
+      - name: Build plugin
+        run: dotnet build src/Mnemosyne/Mnemosyne.csproj -c Release -p:DalamudLibPath=$HOME/dalamud/ -p:EnableWindowsTargeting=true
+
+      - name: Test the built plugin
+        run: dotnet test tests/Mnemosyne.Assembly.Tests/Mnemosyne.Assembly.Tests.csproj -c Release -p:DalamudLibPath=$HOME/dalamud/ -p:EnableWindowsTargeting=true
+
+      - name: Verify package
+        run: test -f src/Mnemosyne/bin/Release/Mnemosyne/latest.zip

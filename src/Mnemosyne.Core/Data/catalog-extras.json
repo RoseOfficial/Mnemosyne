@@ -1,0 +1,190 @@
+{
+  "_sources": {
+    "eventOccurrences": "Every window as the Lodestone announced it, converted to UTC. An event whose return reuses the same quest rows (Final Fantasy XV, Blunderville, the returns) carries only its latest dated window and is marked reused. The genre is the journal genre of the event's quests. Reward signals (kind, row id) are listed per occurrence, the weapon rewards by their achievement ids; Final Fantasy XI has no reward the plugin can read. A collaboration occurrence is named by its in-game event title with the franchise in parentheses. Add a line when a new event is announced",
+    "featureUnlocks": "The quest that unlocks each game feature, by Quest row id, confirmed by exact name against the Quest sheet; the quest titles come from the Console Games Wiki's pages for each feature (https://ffxiv.consolegameswiki.com/wiki/Retainer and the like)",
+    "chroniclesKinds": "The kind of duty each Chronicles of a New Era journal category leads to, by category id; category 24 leads to no duty and is marked Story",
+    "levelCap": "100. The official Dawntrail page says the cap has been expanded to triple digits (https://na.finalfantasyxiv.com/dawntrail/) and the Console Games Wiki Dawntrail page lists a level cap increase to 100 (https://ffxiv.consolegameswiki.com/wiki/Dawntrail); the jobs reader compares this value with PlayerState.MaxLevel at its first read and logs a mismatch",
+    "limitedJobCaps": "No sheet column and no Dalamud or client member states a per-job maximum, so every limited job needs a line here. Blue Mage (class job 36) is 80 (https://ffxiv.consolegameswiki.com/wiki/Blue_Mage). Beastmaster (class job 43) is taken to be 80 as well, not yet confirmed in game. Recheck both on any patch that raises a limited job",
+    "resetCaps": "Levequest allowances cap at 100, three granted at 00:00 and 12:00 UTC. Wondrous Tails holds nine seals and nine second chance points, both from the patch 3.4 notes; the points carry across journals, so they are a held counter. No sheet column and no client constant states the allied society allowance: 12 a day across all societies (https://ffxiv.consolegameswiki.com/wiki/Allied_Society_Quests); recheck it on any patch that changes allied society quests. Three Mini Cactpot tickets a day, refilled at 15:00 UTC, and three Jumbo Cactpot purchases a week, refilled at the data centre's drawing",
+    "rouletteGates": "The client offers no per-roulette unlock read that does not ask the server, so each roulette is judged from its member duties, which come from ContentFinderCondition's per-roulette flag columns. Leveling (1) needs Sastasha (InstanceContent 4) and the Tam-Tara Deepcroft (2) completed; High-level Dungeons (2), Guildhests (4) and Trials (6) need two members unlocked; Main Scenario (3) and Level Cap Dungeons (8) need every member unlocked; Expert (5) needs every member unlocked and completed; Mentor (9) needs battle mentor status (https://ffxiv.consolegameswiki.com/wiki/Duty_Roulette, https://ffxiv.consolegameswiki.com/wiki/Mentor). Frontline (7), Alliance Raids (15) and Normal Raids (17) are taken to open at one member unlocked, since no page states a rule for them; not yet confirmed in game. Recheck on any patch that changes the Duty Finder",
+    "levequestUnlockQuests": "The three level 10 city quests that unlock levequests, Leves of Bentbranch (65756), Leves of Horizon (66223) and Leves of Swiftperch (66229); the allowance row is open once any one is complete. They sit in city side-quest genres the catalog does not keep, so they are listed here",
+    "treasureMapGatherLevel": "The lowest gatherable map, the Timeworn Leather Map, is a GatheringItemLevel 40 item, so the row is open when the highest of Miner, Botanist and Fisher is at least 40 (https://ffxiv.consolegameswiki.com/wiki/Treasure_Hunt). Whether the level 36 quest Treasures and Tribulations (66747) is needed as well is not yet known",
+    "unlockQuests": "The quest that unlocks each window or observed row, none of them in a journal genre the catalog keeps. Rising to the Challenge (66967) for the challenge log; Passion for Fashion (68617); It Takes an Enclave (68677), the end of the Doman Reconstruction chain; The Real Folk Blues (68734) for the Masked Carnivale; Scratch It Rich (66024) and Hitting the Cactpot (66025) for the two brokers. Recheck on any patch that reworks a quest chain",
+    "fashionReport": "Up to four attempts between Friday 08:00 and Tuesday 08:00 UTC; 10,000 MGP for taking part and 50,000 more at a rating of 80 or above, each once a week. The row counts as done at a high score of 80 or more, the rule in Core's FashionReport.Rule",
+    "troves": "One entry per Moogle Treasure Trove, keyed by its irregular tomestone's item id, dated from the Lodestone's announcement converted to UTC. The First Hunt for Astronomy is item 51750, 2026-09-09 to 2026-10-19. Item exchanges stay open until Patch 8.1, which has no date, so no exchange end is carried. Add a line when the next trove is announced",
+    "contentUnlockQuests": "It Could Happen to You (65970) unlocks the Gold Saucer and gates the MGP row; A Pup No Longer (66640 Maelstrom, 66641 Twin Adder, 66642 Immortal Flames) unlocks PvP and any one of them gates the PvP rows. The three PvP quests sit in Grand Company genres the catalog does not keep. Recheck on any patch that reworks either chain",
+    "variantSeries": "Each VVDNotebookSeries row to the InstanceContent row of its Variant dungeon, the gate on its record counter, because no sheet the plugin can read links them (ContentRoute holds 1, 4, 7 and 10). Sil'dih (1) to the Sil'dihn Subterrane (36001), Mount Rokkon (2) to Mount Rokkon (36002) and Aloalo (3) to Aloalo Island (36003) match by name; Corvosi Folklore (4) to The Merchant's Tale (36004) is taken from the order of the series, not yet confirmed in game. Add a line when a fifth Variant dungeon arrives",
+    "placeUnlockQuests": "And We Shall Call It Eureka (68614) opens Eureka, Where Eagles Nest (69477) Bozja, Unfamiliar Territory (70847, the end of 70845, 70846, 70847) the Occult Crescent, A Cosmic Homecoming (70789) Cosmic Exploration, Seeking Sanctuary (70179) Island Sanctuary, and The House That Death Built (67092), Knocking on Heaven's Door (68667), Delve into Myth (70199) and The Pilgrim's Answer (70944) the four deep dungeons, DeepDungeon rows 1 to 4. The racing chocobo is gated on the player state's own Has Race Chocobo flag, so its quest is not listed. Add a line when a fifth deep dungeon arrives",
+    "contentMaxima": "Elemental level 60 (https://ffxiv.consolegameswiki.com/wiki/The_Forbidden_Land,_Eureka), resistance rank 25 (https://ffxiv.consolegameswiki.com/wiki/Zadnor) and knowledge level 40 since patch 7.55 (https://ffxiv.consolegameswiki.com/wiki/Occult_Crescent); aetherpool strength +99; racing chocobo rank 50. The Island Sanctuary cap, the phantom jobs' caps and the Cosmic research stages come from their sheets. Recheck on any patch that raises one",
+    "houseVisit": "The Lodestone's auto-demolition notice: forty-five days without a visit demolishes a personal estate, and a notification appears at thirty. A private estate is kept only by a visit from its owner, so the plugin stamps it while the character stands inside. Recheck on any change to the demolition rules",
+    "collectionUnlockQuests": "My Little Chocobo for the Twin Adder (66236), the Maelstrom (66237) and the Immortal Flames (66238), any one of which opens the barding row; Triple Triad Trial (65973) the card row; Sights of the North (67643) Heavensward's vistas, the one sightseeing gate AdventureExPhase does not name. A Realm Reborn's vistas are gated on the player state's own sightseeing unlock byte, and every expansion from Stormblood on is gated on its AdventureExPhase quest, so neither is listed. Framer's kits need no line: the item sheet's AdditionalData is the kit id",
+    "storage": "No sheet states these, so each is a hand value. Retainer inventory 175 slots (https://ffxiv.consolegameswiki.com/wiki/Retainers: seven tabs of 25; the client's own 175-entry array and the game's 'Items 101-175' text); each saddlebag tab 70 (https://ffxiv.consolegameswiki.com/wiki/Chocobo_Saddlebag, and the client's two 70-entry arrays); the glamour dresser 800 since patch 6.2 (https://ffxiv.consolegameswiki.com/wiki/Glamour_Dressers, and the client's 800-entry arrays). The saddlebag opens with My Feisty Little Chocobo (66698); the dresser needs the Cast Glamour action, GeneralAction row 22. The armoire has no capacity, so its total comes from the Cabinet sheet, not from here. Recheck on any patch that changes a capacity"
+  },
+  "eventOccurrences": [
+    { "genre": 238, "festival": 134, "event": "Heavensturn", "year": 2024, "start": "2023-12-31T15:00:00Z", "end": "2024-01-15T14:59:00Z" },
+    { "genre": 238, "festival": 149, "event": "Heavensturn", "year": 2025, "start": "2024-12-31T15:00:00Z", "end": "2025-01-16T14:59:00Z" },
+    { "genre": 238, "festival": 157, "event": "Heavensturn", "year": 2026, "start": "2025-12-31T15:00:00Z", "end": "2026-01-15T14:59:00Z" },
+    { "genre": 240, "festival": 144, "event": "Valentione's Day", "year": 2024, "start": "2024-02-07T08:00:00Z", "end": "2024-02-21T14:59:00Z" },
+    { "genre": 240, "festival": 154, "event": "Valentione's Day", "year": 2025, "start": "2025-02-03T08:00:00Z", "end": "2025-02-17T14:59:00Z" },
+    { "genre": 240, "festival": 163, "event": "Valentione's Day", "year": 2026, "start": "2026-02-02T08:00:00Z", "end": "2026-02-16T14:59:00Z" },
+    { "genre": 242, "festival": 155, "event": "Little Ladies' Day", "year": 2025, "start": "2025-03-03T08:00:00Z", "end": "2025-03-17T14:59:00Z" },
+    { "genre": 242, "festival": 169, "event": "Little Ladies' Day", "year": 2026, "start": "2026-02-26T08:00:00Z", "end": "2026-03-12T14:59:00Z" },
+    { "genre": 243, "festival": 145, "event": "Little Ladies' & Hatching-tide", "year": 2024, "start": "2024-03-14T08:00:00Z", "end": "2024-04-01T14:59:00Z" },
+    { "genre": 244, "festival": 156, "event": "Hatching-tide", "year": 2025, "start": "2025-04-09T08:00:00Z", "end": "2025-04-24T14:59:00Z" },
+    { "genre": 244, "festival": 172, "event": "Hatching-tide", "year": 2026, "start": "2026-03-23T08:00:00Z", "end": "2026-04-06T14:59:00Z" },
+    { "genre": 245, "festival": 146, "event": "Gold Saucer Festivities", "year": 2024, "start": "2024-05-15T08:00:00Z", "end": "2024-05-31T14:59:00Z" },
+    { "genre": 245, "festival": 161, "event": "Gold Saucer Festivities", "year": 2025, "start": "2025-05-19T08:00:00Z", "end": "2025-06-11T14:59:00Z" },
+    { "genre": 245, "festival": 173, "event": "Gold Saucer Festivities", "year": 2026, "start": "2026-05-29T08:00:00Z", "end": "2026-06-24T14:59:00Z" },
+    { "genre": 246, "festival": 150, "event": "Moonfire Faire", "year": 2024, "start": "2024-08-08T08:00:00Z", "end": "2024-08-26T14:59:00Z" },
+    { "genre": 246, "festival": 159, "event": "Moonfire Faire", "year": 2025, "start": "2025-08-13T08:00:00Z", "end": "2025-08-26T14:59:00Z" },
+    { "genre": 246, "festival": 174, "event": "Moonfire Faire", "year": 2026, "start": "2026-08-12T08:00:00Z", "end": "2026-08-26T14:59:00Z" },
+    { "genre": 247, "festival": 151, "event": "The Rising", "year": 2024, "start": "2024-08-27T07:00:00Z", "end": "2024-09-11T14:59:00Z" },
+    { "genre": 247, "festival": 162, "event": "The Rising", "year": 2025, "start": "2025-08-27T07:00:00Z", "end": "2025-09-11T14:59:00Z" },
+    { "genre": 247, "festival": 175, "event": "The Rising", "year": 2026, "start": "2026-08-27T07:00:00Z", "end": "2026-09-10T14:59:00Z" },
+    { "genre": 248, "festival": 152, "event": "All Saints' Wake", "year": 2024, "start": "2024-10-18T08:00:00Z", "end": "2024-11-04T14:59:00Z" },
+    { "genre": 248, "festival": 164, "event": "All Saints' Wake", "year": 2025, "start": "2025-10-17T08:00:00Z", "end": "2025-11-04T14:59:00Z" },
+    { "genre": 249, "festival": 153, "event": "Starlight Celebration", "year": 2024, "start": "2024-12-16T08:00:00Z", "end": "2024-12-31T14:59:00Z" },
+    { "genre": 249, "festival": 165, "event": "Starlight Celebration", "year": 2025, "start": "2025-12-17T08:00:00Z", "end": "2025-12-31T14:59:00Z" },
+    { "genre": 252, "festival": 84, "event": "A Nocturne for Heroes (Final Fantasy XV)", "year": 2026, "start": "2026-09-13T08:00:00Z", "end": "2026-10-18T14:59:00Z", "reused": true,
+      "rewards": [
+        { "kind": "mount", "id": 151 }, { "kind": "card", "id": 252 }, { "kind": "item", "id": 24802 },
+        { "kind": "orchestrion", "id": 299 }, { "kind": "orchestrion", "id": 300 }, { "kind": "orchestrion", "id": 301 },
+        { "kind": "orchestrion", "id": 302 }, { "kind": "orchestrion", "id": 303 }, { "kind": "orchestrion", "id": 304 }
+      ]
+    },
+    { "genre": 252, "festival": 147, "event": "The Path Infernal (Final Fantasy XVI)", "year": 2024, "start": "2024-04-02T08:00:00Z", "end": "2024-05-08T14:59:00Z",
+      "rewards": [ { "kind": "mount", "id": 326 }, { "kind": "minion", "id": 498 } ]
+    },
+    { "genre": 252, "festival": 7, "event": "Breaking Brick Mountains (Dragon Quest X)", "year": 2026, "start": "2026-06-25T08:00:00Z", "end": "2026-07-13T14:59:00Z", "reused": true,
+      "rewards": [ { "kind": "minion", "id": 62 }, { "kind": "item", "id": 51998 } ]
+    },
+    { "genre": 252, "festival": 30, "event": "The Maiden's Rhapsody (Final Fantasy XI)", "year": 2026, "start": "2026-05-08T08:00:00Z", "end": "2026-05-25T14:59:00Z", "reused": true },
+    { "genre": 252, "festival": 39, "event": "Gather One, Gather All! (Yo-kai Watch)", "year": 2026, "start": "2026-08-04T08:00:00Z", "end": "2026-10-05T14:59:00Z", "reused": true,
+      "rewards": [
+        { "kind": "minion", "id": 200 }, { "kind": "minion", "id": 201 }, { "kind": "minion", "id": 202 }, { "kind": "minion", "id": 203 },
+        { "kind": "minion", "id": 204 }, { "kind": "minion", "id": 205 }, { "kind": "minion", "id": 206 }, { "kind": "minion", "id": 207 },
+        { "kind": "minion", "id": 208 }, { "kind": "minion", "id": 209 }, { "kind": "minion", "id": 210 }, { "kind": "minion", "id": 211 },
+        { "kind": "minion", "id": 212 }, { "kind": "minion", "id": 390 }, { "kind": "minion", "id": 391 }, { "kind": "minion", "id": 392 },
+        { "kind": "minion", "id": 393 },
+        { "kind": "mount", "id": 87 }, { "kind": "mount", "id": 94 }, { "kind": "mount", "id": 228 },
+        { "kind": "item", "id": 41797 },
+        { "kind": "achievement", "id": 1526 }, { "kind": "achievement", "id": 1527 }, { "kind": "achievement", "id": 1528 }, { "kind": "achievement", "id": 1529 },
+        { "kind": "achievement", "id": 1530 }, { "kind": "achievement", "id": 1531 }, { "kind": "achievement", "id": 1532 }, { "kind": "achievement", "id": 1533 },
+        { "kind": "achievement", "id": 1534 }, { "kind": "achievement", "id": 1535 }, { "kind": "achievement", "id": 1536 }, { "kind": "achievement", "id": 1537 },
+        { "kind": "achievement", "id": 1538 }, { "kind": "achievement", "id": 2613 }, { "kind": "achievement", "id": 2614 }, { "kind": "achievement", "id": 2615 },
+        { "kind": "achievement", "id": 2616 }
+      ]
+    },
+    { "genre": 252, "festival": 148, "event": "Blunderville (Fall Guys)", "year": 2025, "start": "2025-11-06T08:00:00Z", "end": "2025-11-27T14:59:00Z", "reused": true,
+      "rewards": [
+        { "kind": "minion", "id": 499 }, { "kind": "minion", "id": 500 }, { "kind": "mount", "id": 330 },
+        { "kind": "emote", "id": 276 }, { "kind": "orchestrion", "id": 657 },
+        { "kind": "item", "id": 41377 }, { "kind": "item", "id": 41378 }, { "kind": "item", "id": 41379 }
+      ]
+    }
+  ],
+  "featureUnlocks": [
+    { "questId": 66045, "feature": "Retainers" },
+    { "questId": 66957, "feature": "Glamour" },
+    { "questId": 68553, "feature": "Glamour plates" },
+    { "questId": 67094, "feature": "Dyeing" },
+    { "questId": 65808, "feature": "Materia melding" },
+    { "questId": 65970, "feature": "Gold Saucer" },
+    { "questId": 66746, "feature": "Aesthetician" },
+    { "questId": 66236, "feature": "Chocobo mount (Twin Adder)" },
+    { "questId": 66237, "feature": "Chocobo mount (Maelstrom)" },
+    { "questId": 66238, "feature": "Chocobo mount (Immortal Flames)" },
+    { "questId": 66698, "feature": "Chocobo companion" },
+    { "questId": 70179, "feature": "Island Sanctuary" },
+    { "questId": 66579, "feature": "Hall of the Novice" },
+    { "questId": 69501, "feature": "Faux Hollows" },
+    { "questId": 67631, "feature": "Collectables and custom deliveries" },
+    { "questId": 67087, "feature": "Custom deliveries: Zhloe Aliapoh" },
+    { "questId": 67928, "feature": "Wondrous Tails" }
+  ],
+  "chroniclesKinds": [
+    { "categoryId": 16, "kind": "Trial" },
+    { "categoryId": 17, "kind": "NormalRaid" },
+    { "categoryId": 18, "kind": "AllianceRaid" },
+    { "categoryId": 19, "kind": "NormalRaid" },
+    { "categoryId": 20, "kind": "Trial" },
+    { "categoryId": 21, "kind": "AllianceRaid" },
+    { "categoryId": 22, "kind": "NormalRaid" },
+    { "categoryId": 23, "kind": "AllianceRaid" },
+    { "categoryId": 24, "kind": "Story" },
+    { "categoryId": 25, "kind": "NormalRaid" },
+    { "categoryId": 26, "kind": "AllianceRaid" },
+    { "categoryId": 27, "kind": "Trial" },
+    { "categoryId": 28, "kind": "NormalRaid" },
+    { "categoryId": 29, "kind": "AllianceRaid" },
+    { "categoryId": 30, "kind": "NormalRaid" },
+    { "categoryId": 31, "kind": "AllianceRaid" }
+  ],
+  "resetCaps": {
+    "levequestAllowances": 100,
+    "alliedSocietyAllowances": 12,
+    "wondrousTailsStickers": 9,
+    "wondrousTailsSecondChance": 9,
+    "miniCactpotTickets": 3,
+    "jumboCactpotTickets": 3
+  },
+  "levelCap": 100,
+  "limitedJobCaps": [
+    { "jobId": 36, "cap": 80 },
+    { "jobId": 43, "cap": 80 }
+  ],
+  "rouletteGates": [
+    { "rouletteId": 1, "rule": "completed", "contentIds": [4, 2] },
+    { "rouletteId": 2, "rule": "unlockedAtLeast", "count": 2 },
+    { "rouletteId": 3, "rule": "unlockedAll" },
+    { "rouletteId": 4, "rule": "unlockedAtLeast", "count": 2 },
+    { "rouletteId": 5, "rule": "completedAll" },
+    { "rouletteId": 6, "rule": "unlockedAtLeast", "count": 2 },
+    { "rouletteId": 7, "rule": "unlockedAtLeast", "count": 1 },
+    { "rouletteId": 8, "rule": "unlockedAll" },
+    { "rouletteId": 9, "rule": "battleMentor" },
+    { "rouletteId": 15, "rule": "unlockedAtLeast", "count": 1 },
+    { "rouletteId": 17, "rule": "unlockedAtLeast", "count": 1 }
+  ],
+  "levequestUnlockQuests": [65756, 66223, 66229],
+  "treasureMapGatherLevel": 40,
+  "unlockQuests": {
+    "challengeLog": 66967,
+    "fashionReport": 68617,
+    "domanEnclave": 68677,
+    "maskedCarnivale": 68734,
+    "miniCactpot": 66024,
+    "jumboCactpot": 66025
+  },
+  "fashionReport": { "attempts": 4, "rewardScore": 80 },
+  "troves": [
+    { "itemId": 51750, "start": "2026-09-09T08:00:00Z", "end": "2026-10-19T14:59:00Z" }
+  ],
+  "contentUnlockQuests": {
+    "goldSaucer": 65970,
+    "pvp": [66640, 66641, 66642]
+  },
+  "variantSeries": [
+    { "seriesId": 1, "contentId": 36001 },
+    { "seriesId": 2, "contentId": 36002 },
+    { "seriesId": 3, "contentId": 36003 },
+    { "seriesId": 4, "contentId": 36004 }
+  ],
+  "placeUnlockQuests": {
+    "eureka": 68614,
+    "bozja": 69477,
+    "occultCrescent": 70847,
+    "cosmicExploration": 70789,
+    "islandSanctuary": 70179,
+    "deepDungeons": [
+      { "dungeonId": 1, "questId": 67092 },
+      { "dungeonId": 2, "questId": 68667 },
+      { "dungeonId": 3, "questId": 70199 },
+      { "dungeonId": 4, "questId": 70944 }
+    ]
+  },
+  "contentMaxima": { "elementalLevel": 60, "resistanceRank": 25, "knowledgeLevel": 40, "aetherpool": 99, "racingRank": 50 },
+  "houseVisit": { "demolitionDays": 45, "warningDays": 30 },
+  "collectionUnlockQuests": { "bardings": [ 66236, 66237, 66238 ], "tripleTriad": 65973, "sightseeingHeavensward": 67643 },
+  "storage": { "retainerInventory": 175, "saddlebag": 70, "premiumSaddlebag": 70, "glamourDresser": 800, "saddlebagQuest": 66698, "castGlamourAction": 22 }
+}

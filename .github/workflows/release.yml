@@ -1,0 +1,199 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  PLUGIN_REPO: RoseOfficial/Mnemosyne
+  AGGREGATOR_REPO: RoseOfficial/Olympus
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Verify tag matches project version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          CSPROJ_VERSION=$(grep -oP '(?<=<Version>)[^<]+' src/Mnemosyne/Mnemosyne.csproj)
+          if [ "$TAG_VERSION" != "$CSPROJ_VERSION" ]; then
+            echo "Tag version ($TAG_VERSION) does not match <Version> in src/Mnemosyne/Mnemosyne.csproj ($CSPROJ_VERSION)" >&2
+            exit 1
+          fi
+          echo "Version consistency OK: $TAG_VERSION"
+          LATEST_HEADING=$(sed -n '/<!-- LATEST-START -->/,/<!-- LATEST-END -->/p' CHANGELOG.md | grep -m1 '^## ')
+          case "$LATEST_HEADING" in
+            "## v$TAG_VERSION"|"## v$TAG_VERSION "*) echo "Changelog heading OK: $LATEST_HEADING" ;;
+            *)
+              echo "The latest CHANGELOG.md block is headed '$LATEST_HEADING', not '## v$TAG_VERSION'; write the release notes before tagging" >&2
+              exit 1
+              ;;
+          esac
+
+      - name: Test
+        run: dotnet test tests/Mnemosyne.Core.Tests/Mnemosyne.Core.Tests.csproj -c Release
+
+      - name: Download Dalamud
+        run: |
+          curl -sSL https://goatcorp.github.io/dalamud-distrib/latest.zip -o dalamud.zip
+          unzip -q dalamud.zip -d ~/dalamud
+
+      - name: Build plugin
+        run: dotnet build src/Mnemosyne/Mnemosyne.csproj -c Release -p:DalamudLibPath=$HOME/dalamud/ -p:EnableWindowsTargeting=true
+
+      - name: Test the built plugin
+        run: dotnet test tests/Mnemosyne.Assembly.Tests/Mnemosyne.Assembly.Tests.csproj -c Release -p:DalamudLibPath=$HOME/dalamud/ -p:EnableWindowsTargeting=true
+
+      - name: Stage release asset
+        run: cp src/Mnemosyne/bin/Release/Mnemosyne/latest.zip Mnemosyne.zip
+
+      - name: Extract release notes
+        id: notes
+        run: |
+          {
+            echo 'body<<NOTES_EOF'
+            sed -n '/<!-- LATEST-START -->/,/<!-- LATEST-END -->/p' CHANGELOG.md | sed '1d;$d' | sed 's/^## .*//'
+            echo 'NOTES_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Mnemosyne.zip
+          body: ${{ steps.notes.outputs.body }}
+
+      - name: Generate manifest entry
+        env:
+          CHANGELOG: ${{ steps.notes.outputs.body }}
+        run: |
+          ZIP_URL="https://github.com/$PLUGIN_REPO/releases/download/$GITHUB_REF_NAME/Mnemosyne.zip"
+          ICON_URL="https://raw.githubusercontent.com/$PLUGIN_REPO/main/src/Mnemosyne/images/icon.png"
+          # Installer screenshots: every docs/images/screenshot-*.png, pinned to this tag.
+          IMAGES=$(for f in docs/images/screenshot-*.png; do
+            [ -e "$f" ] && echo "https://raw.githubusercontent.com/$PLUGIN_REPO/$GITHUB_REF_NAME/$f"
+          done | jq -R . | jq -s .)
+          unzip -p Mnemosyne.zip Mnemosyne.json > packaged-manifest.json
+          jq --arg repo "https://github.com/$PLUGIN_REPO" --arg zip "$ZIP_URL" --arg icon "$ICON_URL" \
+             --arg changelog "$CHANGELOG" --argjson images "$IMAGES" '
+          ($changelog | sub("^\\s+"; "") | sub("\\s+$"; "")) as $notes
+          | {
+            Author, Name, InternalName, Punchline, Description, ApplicableVersion, Tags,
+            AssemblyVersion, DalamudApiLevel,
+            RepoUrl: $repo,
+            IconUrl: $icon,
+            DownloadLinkInstall: $zip,
+            DownloadLinkTesting: $zip,
+            DownloadLinkUpdate: $zip
+          }
+          + (if .CategoryTags then {CategoryTags} else {} end)
+          + (if ($notes | length) > 0 then {Changelog: $notes} else {} end)
+          + (if ($images | length) > 0 then {ImageUrls: $images} else {} end)
+          ' packaged-manifest.json > mnemosyne-entry.json
+          cat mnemosyne-entry.json
+
+      - name: Upload manifest entry
+        uses: actions/upload-artifact@v4
+        with:
+          name: mnemosyne-entry
+          path: mnemosyne-entry.json
+
+      - name: Check for aggregator token
+        id: token
+        env:
+          OLYMPUS_REPO_TOKEN: ${{ secrets.OLYMPUS_REPO_TOKEN }}
+        run: |
+          if [ -z "$OLYMPUS_REPO_TOKEN" ]; then
+            echo "::warning::OLYMPUS_REPO_TOKEN is not set. Paste mnemosyne-entry.json (workflow artifact) into $AGGREGATOR_REPO repo.json by hand."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          RESP=$(curl -s -w '\n%{http_code}' -H "Authorization: Bearer $OLYMPUS_REPO_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/$AGGREGATOR_REPO")
+          CODE=$(printf '%s' "$RESP" | tail -n1)
+          CAN_PUSH=$(printf '%s' "$RESP" | sed '$d' | jq -r '.permissions.push // false')
+          if [ "$CODE" != "200" ]; then
+            echo "::warning::GitHub rejected OLYMPUS_REPO_TOKEN (HTTP $CODE). Re-create the fine-grained token, re-save the secret without stray whitespace, and re-run this job; or paste mnemosyne-entry.json (workflow artifact) into $AGGREGATOR_REPO repo.json by hand."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          elif [ "$CAN_PUSH" != "true" ]; then
+            echo "::warning::OLYMPUS_REPO_TOKEN cannot write to $AGGREGATOR_REPO. Give the token Contents read and write on that repository and re-run this job; or paste mnemosyne-entry.json (workflow artifact) into repo.json by hand."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout aggregator
+        if: steps.token.outputs.present == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.AGGREGATOR_REPO }}
+          ref: main
+          token: ${{ secrets.OLYMPUS_REPO_TOKEN }}
+          path: olympus
+
+      - name: Update aggregator manifest
+        if: steps.token.outputs.present == 'true'
+        run: |
+          jq --slurpfile entry mnemosyne-entry.json \
+            'map(select(.InternalName != "Mnemosyne")) + $entry' \
+            olympus/repo.json > olympus/repo.json.tmp
+          mv olympus/repo.json.tmp olympus/repo.json
+          EXPECTED=$(jq -r .AssemblyVersion mnemosyne-entry.json)
+          if ! jq -e --arg v "$EXPECTED" 'any(.[]; .InternalName == "Mnemosyne" and .AssemblyVersion == $v)' olympus/repo.json > /dev/null; then
+            echo "Mnemosyne entry missing from aggregator manifest after update" >&2
+            cat olympus/repo.json >&2
+            exit 1
+          fi
+          cd olympus
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add repo.json
+          if git diff --cached --quiet; then
+            echo "repo.json unchanged, skipping commit"
+          else
+            git commit -m "Update repo.json for Mnemosyne $GITHUB_REF_NAME"
+            if ! git push origin main; then
+              git pull --rebase origin main
+              git push origin main
+            fi
+          fi
+
+      - name: Check for Discord webhook
+        id: discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "::warning::DISCORD_WEBHOOK is not set; skipping the Discord announcement."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          elif [ "${{ steps.token.outputs.present }}" != "true" ]; then
+            echo "::warning::Aggregator manifest was not updated automatically; skipping the Discord announcement until the entry is pasted by hand."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Discord Notification
+        if: steps.discord.outputs.present == 'true'
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          nodetail: true
+          title: "Mnemosyne ${{ github.ref_name }}"
+          description: |
+            ${{ steps.notes.outputs.body }}
+
+            **[Download from GitHub](https://github.com/${{ env.PLUGIN_REPO }}/releases/tag/${{ github.ref_name }})** • Refresh your plugin list to update
+          color: 0x5865F2

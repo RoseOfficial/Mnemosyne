@@ -1,0 +1,17 @@
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+  <PropertyGroup>
+    <RootNamespace>Mnemosyne</RootNamespace>
+    <AssemblyName>Mnemosyne</AssemblyName>
+    <!-- The manifest's fields live in Mnemosyne.json alone; the packager reads that file, never properties here. -->
+    <!-- Three parts: the release workflow compares it with the tag less its "v". The packager pads it to 0.1.0.0 in the manifest. -->
+    <Version>0.1.0</Version>
+    <InformationalVersion>0.1.0+$([System.DateTime]::UtcNow.ToString('yyyyMMdd-HHmmss'))</InformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mnemosyne.Core\Mnemosyne.Core.csproj" />
+    <ProjectReference Include="..\Mnemosyne.Interop\Mnemosyne.Interop.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images/icon.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

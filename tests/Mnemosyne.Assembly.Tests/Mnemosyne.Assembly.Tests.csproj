@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <!-- Builds the plugin first, and references nothing from it: the tests read the built files. The plugin targets Windows and this
+         project does not, so the reference skips asking the plugin for a matching framework. -->
+    <ProjectReference Include="..\..\src\Mnemosyne\Mnemosyne.csproj" ReferenceOutputAssembly="false" Private="false" SkipGetTargetFrameworkProperties="true" />
+  </ItemGroup>
+</Project>

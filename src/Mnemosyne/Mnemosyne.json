@@ -1,0 +1,11 @@
+{
+  "Name": "Mnemosyne",
+  "Author": "RoseOfficial",
+  "Punchline": "Remembers what every character has done, so you don't have to.",
+  "Description": "A progress checklist for all your characters. Each character appears after you log into it once with the plugin running: its story, jobs, events, dailies and weeklies, content, collections and money, and your own tasks. See what is left on every character in one list, compare them side by side, add up their gil and currencies with gil over time, and give each character a role that decides what counts for it. Mnemosyne stores character data only on this PC. It is never uploaded anywhere. It reads the game and never writes to it; its optional switch button asks Lifestream to change character.",
+  "InternalName": "Mnemosyne",
+  "ApplicableVersion": "any",
+  "Tags": [ "characters", "alts", "checklist", "progress" ],
+  "CategoryTags": [ "utility" ],
+  "DalamudApiLevel": 15
+}

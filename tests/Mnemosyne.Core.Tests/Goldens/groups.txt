@@ -1,0 +1,266 @@
+Story 1 Seventh Umbral Era 215
+Story 2 Seventh Astral Era 80
+Story 3 Heavensward 94
+Story 4 Dragonsong War 25
+Story 5 Post-Dragonsong War 19
+Story 6 Stormblood 122
+Story 7 Post-Ala Mhigan Liberation 40
+Story 8 Shadowbringers 106
+Story 9 The Voyage Home 32
+Story 10 Dark Reprise 19
+Story 11 Endwalker 108
+Story 12 Newfound Adventure 47
+Story 13 Dawntrail 100
+Story 14 The New Dawn 25
+Story 15 Winter's Prelude 18
+Story 100 Gladiator Quests 10
+Story 101 Pugilist Quests 10
+Story 102 Marauder Quests 10
+Story 103 Lancer Quests 10
+Story 104 Archer Quests 10
+Story 105 Rogue Quests 10
+Story 106 Conjurer Quests 10
+Story 107 Thaumaturge Quests 10
+Story 108 Arcanist Quests 11
+Story 109 Carpenter Quests 22
+Story 110 Blacksmith Quests 22
+Story 111 Armorer Quests 22
+Story 112 Goldsmith Quests 22
+Story 113 Leatherworker Quests 22
+Story 114 Weaver Quests 22
+Story 115 Alchemist Quests 22
+Story 116 Culinarian Quests 22
+Story 117 Miner Quests 22
+Story 118 Botanist Quests 22
+Story 119 Fisher Quests 22
+Story 120 Paladin Quests 19
+Story 121 Monk Quests 19
+Story 122 Warrior Quests 20
+Story 123 Dragoon Quests 20
+Story 124 Bard Quests 19
+Story 125 Ninja Quests 22
+Story 126 White Mage Quests 20
+Story 127 Black Mage Quests 19
+Story 128 Summoner Quests 19
+Story 129 Scholar Quests 19
+Story 130 Dark Knight Quests 18
+Story 131 Machinist Quests 22
+Story 132 Astrologian Quests 20
+Story 133 Samurai Quests 13
+Story 134 Red Mage Quests 13
+Story 135 Gunbreaker Quests 7
+Story 136 Dancer Quests 7
+Story 137 Sage Quests 6
+Story 138 Reaper Quests 6
+Story 139 Viper Quests 6
+Story 140 Pictomancer Quests 6
+Story 141 Blue Mage Quests 26
+Story 142 Beastmaster Quests 10
+Story 143 Facet of Forging Quests 3
+Story 144 Facet of Crafting Quests 3
+Story 145 Facet of Nourishing Quests 3
+Story 146 Facet of Gathering Quests 3
+Story 147 Facet of Fishing Quests 3
+Story 148 Crystalline Mean Quests 2
+Story 149 Faculty of Archaeology Quests 7
+Story 150 Faculty of Astronomy Quests 7
+Story 151 Faculty of Medicine Quests 7
+Story 152 Faculty of Anthropology Quests 7
+Story 153 Faculty of Aetherology Quests 7
+Story 154 Studium Quests 2
+Story 155 XRral Soj Metalwares Quests 7
+Story 156 Epistles by Pameka Quests 7
+Story 157 Xeerol Ja Juicecraft Quests 7
+Story 158 Shunye's Apothecary Quests 7
+Story 159 Fish Fancies Donuhanu Quests 7
+Story 160 Wachumeqimeqi Quests 2
+Story 200 Tank Role Quests (Shadowbringers) 6
+Story 201 Healer Role Quests (Shadowbringers) 6
+Story 202 Physical DPS Role Quests (Shadowbringers) 6
+Story 203 Magical Ranged DPS Role Quests (Shadowbringers) 6
+Story 204 Role Quests (Shadowbringers) 2
+Story 205 Tank Role Quests (Endwalker) 6
+Story 206 Healer Role Quests (Endwalker) 6
+Story 207 Melee DPS Role Quests (Endwalker) 6
+Story 208 Physical Ranged DPS Role Quests (Endwalker) 6
+Story 209 Magical Ranged DPS Role Quests (Endwalker) 6
+Story 210 Role Quests (Endwalker) 4
+Story 211 Tank Role Quests (Dawntrail) 6
+Story 212 Healer Role Quests (Dawntrail) 6
+Story 213 Melee DPS Role Quests (Dawntrail) 6
+Story 214 Physical Ranged DPS Role Quests (Dawntrail) 6
+Story 215 Magical Ranged DPS Role Quests (Dawntrail) 6
+Story 216 Role Quests (Dawntrail) 5
+Story 300 Hildibrand Adventures 21
+Story 301 Further Hildibrand Adventures 8
+Story 302 Even Further Hildibrand Adventures 9
+Story 303 Somehow Further Hildibrand Adventures 10
+Story 304 Manderville Weapons 8
+Story 305 Inconceivably Further Hildibrand Adventures 9
+Story 416 Primals (trials) 15
+Story 417 Bahamut (raid) 6
+Story 418 The Crystal Tower (alliance raid) 10
+Story 419 Alexander (raid) 15
+Story 420 The Warring Triad (trials) 10
+Story 421 The Shadow of Mhach (alliance raid) 7
+Story 422 Omega (raid) 17
+Story 423 Return to Ivalice (alliance raid) 12
+Story 424 The Four Lords 5
+Story 425 Eden (raid) 18
+Story 426 YoRHa: Dark Apocalypse (alliance raid) 20
+Story 427 The Sorrow of Werlyt (trials) 6
+Story 428 Pandæmonium (raid) 17
+Story 429 Myths of the Realm (alliance raid) 10
+Story 430 The Arcadion (raid) 18
+Story 431 Echoes of Vana'diel (alliance raid) 10
+Story 500 Tales of the Dragonsong War 5
+Story 501 Tales from the Shadows 1
+Story 502 Tales of Newfound Adventure 2
+Story 503 Zodiac Weapons 14
+Story 504 Anima Weapons 14
+Story 505 The Forbidden Land, Eureka 1
+Story 506 Resistance Weapons 40
+Story 507 Phantom Weapons 13
+Story 508 Tales from the Calamity 2
+Story 509 Delivery Moogle Quests 25
+Story 510 Scholasticate Quests 13
+Story 511 Void Quests 3
+Story 512 Tataru's Grand Endeavor 7
+Story 513 Doman Adventurers' Guild Quests 3
+Story 514 Doman Reconstruction Quests 4
+Story 515 Ishgardian Restoration Main Quests 13
+Story 516 Ishgardian Restoration Sidequests 25
+Story 517 Splendorous Tools 11
+Story 518 Palace of the Dead 3
+Story 519 Heaven-on-High 2
+Story 520 Eureka Orthos 3
+Story 521 Pilgrim's Traverse 3
+Story 522 Island Sanctuary Quests 6
+Story 523 Variant Dungeons 8
+Story 524 Cosmic Exploration Main Quests 9
+Story 525 Cosmic Exploration Sidequests 14
+Story 526 The Occult Crescent 18
+Story 600 Feature unlocks 17
+Story 700 Aether currents 31
+Story 800 Allied societies 20
+Jobs 1 Tanks 4
+Jobs 2 Healers 3
+Jobs 3 Melee DPS 6
+Jobs 4 Ranged DPS 7
+Jobs 5 Crafters 8
+Jobs 6 Gatherers 3
+Jobs 7 Limited jobs 3
+Jobs 8 Grand Company 4
+Events 1 Heavensturn 13
+Events 2 Valentione's Day 12
+Events 3 Valentione's & Little Ladies' Day 1
+Events 4 Little Ladies' Day 11
+Events 5 Little Ladies' & Hatching-tide 1
+Events 6 Hatching-tide 12
+Events 7 Gold Saucer Festivities 11
+Events 8 Moonfire Faire 13
+Events 9 The Rising 13
+Events 10 All Saints' Wake 13
+Events 11 Starlight Celebration 13
+Events 12 Collaboration Quests 10
+Events 100 Moogle Treasure Trove 1
+Resets 110 Duty roulettes 11
+Resets 120 Hunt bills, daily 16
+Resets 130 Allied societies 1
+Resets 140 Grand Company 2
+Resets 150 Mini Cactpot 1
+Resets 210 Wondrous Tails 2
+Resets 215 Faux Hollows 1
+Resets 221 Challenge log: Battles 8
+Resets 222 Challenge log: PvP 6
+Resets 223 Challenge log: FATE 2
+Resets 224 Challenge log: Levequests 2
+Resets 225 Challenge log: Crafting & Gathering 10
+Resets 226 Challenge log: Treasure Hunt 3
+Resets 227 Challenge log: Allied Society Quests 2
+Resets 228 Challenge log: Grand Company 3
+Resets 229 Challenge log: Retainers 2
+Resets 230 Challenge log: Gold Saucer 17
+Resets 231 Challenge log: Field Operations 18
+Resets 232 Challenge log: Deep Dungeons 5
+Resets 233 Challenge log: Other 7
+Resets 234 Challenge log: Complete 5
+Resets 240 Custom deliveries 13
+Resets 250 Hunt bills, weekly 6
+Resets 255 Tomestones 1
+Resets 260 Jumbo Cactpot 1
+Resets 265 Fashion Report 1
+Resets 270 Masked Carnivale 3
+Resets 275 Doman Enclave 1
+Resets 280 Raid lockouts 2
+Resets 310 Allowances 2
+Resets 320 Timers 13
+Content 100 Housing 5
+Content 200 PvP 7
+Content 300 Gold Saucer 2
+Content 400 Hunting log 12
+Content 500 Eureka 5
+Content 510 Save the Queen 5
+Content 520 Occult Crescent 28
+Content 530 Cosmic Exploration 11
+Content 540 Island Sanctuary 1
+Content 550 Deep Dungeons 8
+Content 1000 Dungeons (A Realm Reborn) 31
+Content 1010 Dungeons (Heavensward) 18
+Content 1020 Dungeons (Stormblood) 15
+Content 1030 Dungeons (Shadowbringers) 13
+Content 1040 Dungeons (Endwalker) 13
+Content 1050 Dungeons (Dawntrail) 13
+Content 1100 Guildhests 14
+Content 1200 Trials (A Realm Reborn) 18
+Content 1201 High-end Trials (A Realm Reborn) 8
+Content 1210 Trials (Heavensward) 7
+Content 1211 High-end Trials (Heavensward) 7
+Content 1220 Trials (Stormblood) 9
+Content 1221 High-end Trials (Stormblood) 8
+Content 1230 Trials (Shadowbringers) 7
+Content 1231 High-end Trials (Shadowbringers) 8
+Content 1240 Trials (Endwalker) 9
+Content 1241 High-end Trials (Endwalker) 7
+Content 1250 Trials (Dawntrail) 8
+Content 1251 High-end Trials (Dawntrail) 9
+Content 1300 Raids (A Realm Reborn) 13
+Content 1301 Savage Raids (A Realm Reborn) 4
+Content 1302 Alliance Raids (A Realm Reborn) 3
+Content 1310 Normal Raids (Heavensward) 12
+Content 1311 Savage Raids (Heavensward) 12
+Content 1312 Alliance Raids (Heavensward) 3
+Content 1320 Normal Raids (Stormblood) 12
+Content 1321 Savage Raids (Stormblood) 12
+Content 1322 Alliance Raids (Stormblood) 3
+Content 1330 Normal Raids (Shadowbringers) 12
+Content 1331 Savage Raids (Shadowbringers) 12
+Content 1332 Alliance Raids (Shadowbringers) 3
+Content 1340 Normal Raids (Endwalker) 12
+Content 1341 Savage Raids (Endwalker) 12
+Content 1342 Alliance Raids (Endwalker) 3
+Content 1350 Normal Raids (Dawntrail) 12
+Content 1351 Savage Raids (Dawntrail) 12
+Content 1352 Alliance Raids (Dawntrail) 3
+Content 1400 Ultimate Raids 7
+Content 1410 Chaotic Alliance Raid 1
+Content 1420 V&C Dungeon Finder 16
+Content 1430 The Masked Carnivale 32
+Collections 100 Collection 11
+Collections 200 Crafting Log 8
+Collections 210 Gathering Log 2
+Collections 220 Fishing Log 2
+Collections 230 Sightseeing Log 6
+Collections 310 Battle 7
+Collections 320 PvP 4
+Collections 330 Character 7
+Collections 340 Items 16
+Collections 350 Crafting & Gathering 12
+Collections 360 Quests 6
+Collections 370 Exploration 17
+Collections 380 Grand Company 4
+Money 100 Currency 32
+Money 110 Allagan Tomestones 4
+Money 120 Societal Currency 20
+Money 200 Retainer 30
+Money 300 Storage 6

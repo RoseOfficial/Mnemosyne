@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Mnemosyne.Core</RootNamespace>
+    <!-- Its symbols inside the DLL, as the Dalamud SDK does for the other two projects, and its source paths made relative on a CI runner. -->
+    <DebugType>embedded</DebugType>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\*.json" LogicalName="Mnemosyne.Core.Data.%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>
