@@ -25,10 +25,10 @@ public class ReleaseFilesTests
     }
 
     [Fact]
-    public void The_licence_is_mit_under_roseofficial()
+    public void The_licence_is_all_rights_reserved_under_roseofficial()
     {
         var licence = Read("LICENSE");
-        Assert.StartsWith("MIT License", licence);
+        Assert.StartsWith("Copyright (c) 2026 RoseOfficial. All rights reserved.", licence);
         Assert.Contains("Copyright (c) 2026 RoseOfficial", licence);
     }
 

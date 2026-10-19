@@ -93,4 +93,4 @@ listed.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE).
+All rights reserved. See [LICENSE](LICENSE).
